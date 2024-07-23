@@ -1,42 +1,88 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Merieux avocat</title>
-        <meta charset="UTF-8">
-        <meta name="description" content="Bienvenue au Patio, votre bar et restaurant préféré au cœur de la ville. Découvrez notre menu et nos événements spéciaux.">
-        <meta name="keywords" content="Le Patio, Bar, Restaurant, Menu, Réservation, Événements">
-        <meta name="author" content="Le Patio">
-        <link rel="icon" href="assets/images/logo.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="index.css">
-        <script src="index.js" defer></script>
-
-    </head>
-    <body>
-        <div id="intro">
-            <h1 class="tracking-out-expand-fwd">Merieux avocat</h1>
-        </div>
-        <div id="content" class="hidden">
-            <header>
-                <h1>Cabinet d'avocat</h1>
-                <nav>
-                    <ul>
-                        <li><a href="#">Accueil</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </nav>
-            </header>
-            <div class="conteneur">
-                <section>
-                    <h2>Présentation</h2>
-                    <p>Contenu de présentation de l'avocat...</p>
-                </section>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabinet de Maître Jean-Claude MÉRIEUX</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="assets/images/logoAvocat.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="toglo">
+            <img src="assets/images/logoAvocat.webp" alt="Logo" class="brand-logo">
+            <div class="menu-toggle" id="menu-toggle">☰</div>
             </div>
-            <footer>
-                <p>&copy; 2024 Cabinet d'avocat</p>
-            </footer>
-        </div>
-    </body>
-    </html>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Accueil</a></li>
+                <li class="dropdown" onclick="toggleDescription(this)">
+                    <a href="#business-law">Droit des affaires <span class="arrow">▼</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#societies">Droit des sociétés</a></li>
+                        <li><a href="#commercial-law">Droit commercial & économique</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown" onclick="toggleDescription(this)">
+                    <a href="#tax-law">Droit fiscal <span class="arrow">▼</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#business-tax">Fiscalité des entreprises</a></li>
+                        <li><a href="#patrimonial-tax">Fiscalité patrimoniale</a></li>
+                        <li><a href="#real-estate-tax">Fiscalité immobilière</a></li>
+                        <li><a href="#indirect-tax">Avocat fiscalité indirecte</a></li>
+                        <li><a href="#tax-disputes">Avocat contrôles et contentieux fiscaux</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown" onclick="toggleDescription(this)">
+                    <a href="#social-law">Droit social <span class="arrow">▼</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#dismissal">Licenciement</a></li>
+                        <li><a href="#conventional-break">Rupture conventionnelle</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown" onclick="toggleDescription(this)">
+                    <a href="#real-estate"> immobilier et entreprise <span class="arrow">▼</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="#property-sale">Bien à vendre</a></li>
+                    </ul>
+                </li>
+                <li><a href="#fees">Honoraire</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+</header>
 
+    <div class="main-content" id="home">
+        <div class="title-content">
+            <h1>Le Cabinet de Maître Jean-Claude MÉRIEUX</h1>
+            <div class="profile-image-container">
+                <img src="assets/images/profil.jpeg" alt="photo de Jean-Claude Mérieux" class="profile-image">
+            </div>
+        </div>
+        <p>
+            Le Cabinet de Maître Jean-Claude MÉRIEUX prodigue ses conseils juridiques en matière de droit des affaires, droit des sociétés et droit social et ses conseils fiscaux aussi bien aux entreprises qu’aux particuliers.
+        </p>
+        <p>
+            Pour accompagner ses clients dans leurs projets immobiliers, le Cabinet de Maître Jean-Claude MÉRIEUX exerce également l’activité de mandataire en transactions immobilières.
+        </p>
+        <p>
+            Toujours attentif aux évolutions du droit, le Cabinet de Maître Jean-Claude MÉRIEUX met tout en œuvre pour répondre efficacement aux besoins de ses clients dont il est particulièrement à l’écoute.
+        </p>
+        <p>
+            Ses valeurs sont la transparence, la confiance, la disponibilité et la recherche permanente de l’excellence et de la qualité.
+        </p>
+        <p>
+            Vos urgences sont sa priorité et vous pourrez compter sur le Cabinet de Maître Jean-Claude MÉRIEUX pour vous accorder son attention la plus totale pour votre entière satisfaction, dans le respect de ses valeurs et obligations déontologiques.
+        </p>
+        <p>
+            Comme de nombreux particuliers et professionnels qui font confiance au Cabinet de Maître Jean-Claude MÉRIEUX, rejoignez-nous et profitez de nos compétences ainsi que de nos services.
+        </p>
+    </div>
+
+    <footer class="footer">
+        <span>&copy; 2024 Cabinet de Maître Jean-Claude MÉRIEUX. Tous droits réservés.</span>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
