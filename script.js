@@ -125,26 +125,39 @@ document.addEventListener('DOMContentLoaded', onScroll);
                             carousel.addEventListener('touchmove', handleTouchMove, false);
                         
                             let x1 = null;
+                            let y1 = null; // Add a variable to track vertical touch position
                         
                             function handleTouchStart(evt) {
                                 const firstTouch = evt.touches[0];
                                 x1 = firstTouch.clientX;
+                                y1 = firstTouch.clientY; // Track the initial vertical position
                             }
                         
                             function handleTouchMove(evt) {
-                                if (!x1) return false;
+                                if (!x1 || !y1) {
+                                    return false;
+                                }
                         
                                 let x2 = evt.touches[0].clientX;
-                                let xDiff = x2 - x1;
+                                let y2 = evt.touches[0].clientY; // Get the current vertical position
                         
-                                if (xDiff > 0) {
-                                    // Swipe à droite
-                                    if (currentIndex > 0) goToSlide(currentIndex - 1);
-                                } else {
-                                    // Swipe à gauche
-                                    if (currentIndex < cards.length - 1) goToSlide(currentIndex + 1);
+                                let xDiff = x2 - x1;
+                                let yDiff = y2 - y1; // Calculate the vertical difference
+                        
+                                // Only trigger horizontal swipe if vertical swipe is not significant
+                                if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                                    if (xDiff > 0) {
+                                        // Swipe à droite
+                                        if (currentIndex > 0) goToSlide(currentIndex - 1);
+                                    } else {
+                                        // Swipe à gauche
+                                        if (currentIndex < cards.length - 1) goToSlide(currentIndex + 1);
+                                    }
                                 }
+                        
+                                // Reset the initial touch positions
                                 x1 = null;
+                                y1 = null;
                             }
                         });
                         
