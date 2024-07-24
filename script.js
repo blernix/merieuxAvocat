@@ -88,7 +88,6 @@ document.addEventListener('DOMContentLoaded', onScroll);
 
 
                         // CARROUSEL
-
                         document.addEventListener('DOMContentLoaded', function() {
                             const carousel = document.querySelector('.carousel');
                             const cards = document.querySelectorAll('.card');
@@ -115,7 +114,9 @@ document.addEventListener('DOMContentLoaded', onScroll);
                         
                             function goToSlide(index) {
                                 currentIndex = index;
-                                carousel.style.transform = `translateX(-${index * 100}%)`;
+                                const offset = -index * 100;
+                                console.log(`Going to slide: ${index}, offset: ${offset}%`);
+                                carousel.style.transform = `translateX(${offset}%)`;
                                 updateDots();
                             }
                         
@@ -125,12 +126,13 @@ document.addEventListener('DOMContentLoaded', onScroll);
                             carousel.addEventListener('touchmove', handleTouchMove, false);
                         
                             let x1 = null;
-                            let y1 = null; // Add a variable to track vertical touch position
+                            let y1 = null;
                         
                             function handleTouchStart(evt) {
                                 const firstTouch = evt.touches[0];
                                 x1 = firstTouch.clientX;
-                                y1 = firstTouch.clientY; // Track the initial vertical position
+                                y1 = firstTouch.clientY;
+                                console.log(`Touch start: x1=${x1}, y1=${y1}`);
                             }
                         
                             function handleTouchMove(evt) {
@@ -139,23 +141,27 @@ document.addEventListener('DOMContentLoaded', onScroll);
                                 }
                         
                                 let x2 = evt.touches[0].clientX;
-                                let y2 = evt.touches[0].clientY; // Get the current vertical position
+                                let y2 = evt.touches[0].clientY;
                         
                                 let xDiff = x2 - x1;
-                                let yDiff = y2 - y1; // Calculate the vertical difference
+                                let yDiff = y2 - y1;
                         
-                                // Only trigger horizontal swipe if vertical swipe is not significant
+                                console.log(`Touch move: x2=${x2}, y2=${y2}, xDiff=${xDiff}, yDiff=${yDiff}`);
+                        
                                 if (Math.abs(xDiff) > Math.abs(yDiff)) {
                                     if (xDiff > 0) {
-                                        // Swipe à droite
-                                        if (currentIndex > 0) goToSlide(currentIndex - 1);
+                                        console.log("Swiping right");
+                                        if (currentIndex > 0) {
+                                            goToSlide(currentIndex - 1);
+                                        }
                                     } else {
-                                        // Swipe à gauche
-                                        if (currentIndex < cards.length - 1) goToSlide(currentIndex + 1);
+                                        console.log("Swiping left");
+                                        if (currentIndex < cards.length - 1) {
+                                            goToSlide(currentIndex + 1);
+                                        }
                                     }
                                 }
                         
-                                // Reset the initial touch positions
                                 x1 = null;
                                 y1 = null;
                             }
