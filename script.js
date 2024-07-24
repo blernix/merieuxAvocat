@@ -31,6 +31,8 @@ function toggleDescription(element) {
     }
 }
 
+                            // NAVBAR
+
 document.getElementById('menu-toggle').addEventListener('click', function() {
     document.getElementById('nav-links').classList.toggle('open');
 
@@ -82,3 +84,67 @@ function isElementInViewport(el) {
 }
 
 document.addEventListener('DOMContentLoaded', onScroll);
+
+
+
+                        // CARROUSEL
+
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const carousel = document.querySelector('.carousel');
+                            const cards = document.querySelectorAll('.card');
+                            const pagination = document.querySelector('.pagination');
+                            let currentIndex = 0;
+                        
+                            function createDots() {
+                                cards.forEach((_, index) => {
+                                    const dot = document.createElement('div');
+                                    dot.classList.add('dot');
+                                    if (index === 0) dot.classList.add('active');
+                                    dot.addEventListener('click', () => {
+                                        goToSlide(index);
+                                    });
+                                    pagination.appendChild(dot);
+                                });
+                            }
+                        
+                            function updateDots() {
+                                const dots = document.querySelectorAll('.dot');
+                                dots.forEach(dot => dot.classList.remove('active'));
+                                dots[currentIndex].classList.add('active');
+                            }
+                        
+                            function goToSlide(index) {
+                                currentIndex = index;
+                                carousel.style.transform = `translateX(-${index * 100}%)`;
+                                updateDots();
+                            }
+                        
+                            createDots();
+                        
+                            carousel.addEventListener('touchstart', handleTouchStart, false);
+                            carousel.addEventListener('touchmove', handleTouchMove, false);
+                        
+                            let x1 = null;
+                        
+                            function handleTouchStart(evt) {
+                                const firstTouch = evt.touches[0];
+                                x1 = firstTouch.clientX;
+                            }
+                        
+                            function handleTouchMove(evt) {
+                                if (!x1) return false;
+                        
+                                let x2 = evt.touches[0].clientX;
+                                let xDiff = x2 - x1;
+                        
+                                if (xDiff > 0) {
+                                    // Swipe à droite
+                                    if (currentIndex > 0) goToSlide(currentIndex - 1);
+                                } else {
+                                    // Swipe à gauche
+                                    if (currentIndex < cards.length - 1) goToSlide(currentIndex + 1);
+                                }
+                                x1 = null;
+                            }
+                        });
+                        
