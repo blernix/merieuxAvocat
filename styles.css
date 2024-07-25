@@ -7,8 +7,9 @@
   --white-color: #fff;
   --gray-color: #666;
   --dot-color: #ccc;
-  --dot-active-color: #741D1A;
+  --dot-active-color: #1B3A57; /* Utiliser bleu marine pour les points actifs */
 }
+
 
 body {
   font-family: Arial, sans-serif;
@@ -182,44 +183,42 @@ body {
   }
 }
 
-.main-content {
-  padding: 20px;
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-  background-color: var(--white-color);
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.title-content {
-  margin-bottom: 20px;
-}
-
-.profile-image-container {
+.parallax-section {
   position: relative;
-  display: inline-block;
+  height: 60vh;
   overflow: hidden;
-  border-radius: 50%;
-  border: 3px solid var(--primary-color);
 }
 
-.profile-image {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  filter: grayscale(100%);
-  transition: filter 0.5s ease;
+.parallax-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('assets/images/depositphotos_654482262-stock-photo-shiny-golden-balanced-scale-wooden.jpg') no-repeat center center/cover;
+  z-index: -1;
+  transform: translateZ(-1px) scale(2);
 }
 
-.profile-image-container:hover .profile-image {
-  filter: grayscale(0%);
+.parallax-content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white-color);
 }
 
-p {
-  text-align: left;
-  margin: 10px 0;
-  animation: fadeInUp 0.5s ease both;
+.main-content p {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  font-size: large;
+}
+
+.main-content p.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @media (max-width: 768px) {
@@ -276,7 +275,9 @@ p {
 
 .card .content {
   padding: 20px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card .content h3 {

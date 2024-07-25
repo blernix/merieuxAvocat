@@ -88,82 +88,102 @@ document.addEventListener('DOMContentLoaded', onScroll);
 
 
                         // CARROUSEL
-                        document.addEventListener('DOMContentLoaded', function() {
-                            const carousel = document.querySelector('.carousel');
-                            const cards = document.querySelectorAll('.card');
-                            const pagination = document.querySelector('.pagination');
-                            let currentIndex = 0;
-                        
-                            function createDots() {
-                                cards.forEach((_, index) => {
-                                    const dot = document.createElement('div');
-                                    dot.classList.add('dot');
-                                    if (index === 0) dot.classList.add('active');
-                                    dot.addEventListener('click', () => {
-                                        goToSlide(index);
-                                    });
-                                    pagination.appendChild(dot);
-                                });
-                            }
-                        
-                            function updateDots() {
-                                const dots = document.querySelectorAll('.dot');
-                                dots.forEach(dot => dot.classList.remove('active'));
-                                dots[currentIndex].classList.add('active');
-                            }
-                        
-                            function goToSlide(index) {
-                                currentIndex = index;
-                                const offset = -index * 100;
-                                console.log(`Going to slide: ${index}, offset: ${offset}%`);
-                                carousel.style.transform = `translateX(${offset}%)`;
-                                updateDots();
-                            }
-                        
-                            createDots();
-                        
-                            carousel.addEventListener('touchstart', handleTouchStart, false);
-                            carousel.addEventListener('touchmove', handleTouchMove, false);
-                        
-                            let x1 = null;
-                            let y1 = null;
-                        
-                            function handleTouchStart(evt) {
-                                const firstTouch = evt.touches[0];
-                                x1 = firstTouch.clientX;
-                                y1 = firstTouch.clientY;
-                                console.log(`Touch start: x1=${x1}, y1=${y1}`);
-                            }
-                        
-                            function handleTouchMove(evt) {
-                                if (!x1 || !y1) {
-                                    return false;
-                                }
-                        
-                                let x2 = evt.touches[0].clientX;
-                                let y2 = evt.touches[0].clientY;
-                        
-                                let xDiff = x2 - x1;
-                                let yDiff = y2 - y1;
-                        
-                                console.log(`Touch move: x2=${x2}, y2=${y2}, xDiff=${xDiff}, yDiff=${yDiff}`);
-                        
-                                if (Math.abs(xDiff) > Math.abs(yDiff)) {
-                                    if (xDiff > 0) {
-                                        console.log("Swiping right");
-                                        if (currentIndex > 0) {
-                                            goToSlide(currentIndex - 1);
-                                        }
-                                    } else {
-                                        console.log("Swiping left");
-                                        if (currentIndex < cards.length - 1) {
-                                            goToSlide(currentIndex + 1);
-                                        }
-                                    }
-                                }
-                        
-                                x1 = null;
-                                y1 = null;
-                            }
-                        });
-                        
+                       document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.querySelector('.carousel');
+    const cards = document.querySelectorAll('.card');
+    const pagination = document.querySelector('.pagination');
+    let currentIndex = 0;
+
+    function createDots() {
+        cards.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+            });
+            pagination.appendChild(dot);
+        });
+    }
+
+    function updateDots() {
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[currentIndex].classList.add('active');
+    }
+
+    function goToSlide(index) {
+        currentIndex = index;
+        const offset = -index * 100;
+        carousel.style.transform = `translateX(${offset}%)`;
+        updateDots();
+    }
+
+    createDots();
+
+    carousel.addEventListener('touchstart', handleTouchStart, false);
+    carousel.addEventListener('touchmove', handleTouchMove, false);
+
+    let x1 = null;
+    let y1 = null;
+
+    function handleTouchStart(evt) {
+        const firstTouch = evt.touches[0];
+        x1 = firstTouch.clientX;
+        y1 = firstTouch.clientY;
+    }
+
+    function handleTouchMove(evt) {
+        if (!x1 || !y1) {
+            return false;
+        }
+
+        let x2 = evt.touches[0].clientX;
+        let y2 = evt.touches[0].clientY;
+
+        let xDiff = x2 - x1;
+        let yDiff = y2 - y1;
+
+        if (Math.abs(xDiff) > Math.abs(yDiff)) {
+            if (xDiff > 0) {
+                if (currentIndex > 0) {
+                    goToSlide(currentIndex - 1);
+                }
+            } else {
+                if (currentIndex < cards.length - 1) {
+                    goToSlide(currentIndex + 1);
+                }
+            }
+        }
+
+        x1 = null;
+        y1 = null;
+    }
+});
+
+
+// Anime.js animations
+const paragraphs = document.querySelectorAll('.main-content p');
+
+function animateParagraphs() {
+    paragraphs.forEach((paragraph, index) => {
+        const rect = paragraph.getBoundingClientRect();
+        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+            paragraph.classList.add('visible');
+        } else {
+            paragraph.classList.remove('visible');
+        }
+    });
+}
+
+window.addEventListener('scroll', animateParagraphs);
+animateParagraphs(); // Initial call to animate paragraphs on page load
+
+// Parallax effect
+window.addEventListener('scroll', () => {
+    const parallax = document.querySelector('.parallax-background');
+    let scrollPosition = window.pageYOffset;
+    parallax.style.transform = 'translateY(' + scrollPosition * 0.5 + 'px)';
+});
+
+
