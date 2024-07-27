@@ -8,52 +8,16 @@
     <title>Cabinet de Maître Jean-Claude MÉRIEUX</title>
     <link rel="stylesheet" href="styles.min.css">
     <link rel="icon" href="assets/images/logoAvocat.ico" type="image/x-icon">
+    <script src="footer-component.js" defer></script>
+    <script src="header-component.js" defer ></script>
+
 </head>
 
 <body>
+
+    <header-component></header-component>
   
-    <header>
-        <nav class="navbar">
-            <div class="toglo">
-                <div class="menu-toggle" id="menu-toggle" aria-label="Menu">☰</div>
-            </div>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#home">Accueil</a></li>
-                <li class="dropdown">
-                    <a href="#business-law" aria-haspopup="true" aria-expanded="false">Droit des affaires <span class="arrow">▼</span></a>
-                    <ul class="dropdown-content">
-                        <li><a href="#societies">Droit des sociétés</a></li>
-                        <li><a href="#commercial-law">Droit commercial & économique</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#tax-law" aria-haspopup="true" aria-expanded="false">Droit fiscal <span class="arrow">▼</span></a>
-                    <ul class="dropdown-content">
-                        <li><a href="#business-tax">Fiscalité des entreprises</a></li>
-                        <li><a href="#patrimonial-tax">Fiscalité patrimoniale</a></li>
-                        <li><a href="#real-estate-tax">Fiscalité immobilière</a></li>
-                        <li><a href="#indirect-tax">Avocat fiscalité indirecte</a></li>
-                        <li><a href="#tax-disputes">Avocat contrôles et contentieux fiscaux</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#social-law" aria-haspopup="true" aria-expanded="false">Droit social <span class="arrow">▼</span></a>
-                    <ul class="dropdown-content">
-                        <li><a href="#dismissal">Licenciement</a></li>
-                        <li><a href="#conventional-break">Rupture conventionnelle</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#real-estate" aria-haspopup="true" aria-expanded="false">Immobilier et entreprise <span class="arrow">▼</span></a>
-                    <ul class="dropdown-content">
-                        <li><a href="#property-sale">Bien à vendre</a></li>
-                    </ul>
-                </li>
-                <li><a href="#fees">Honoraire</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+ 
 
     <section class="parallax-section" id="home">
         <div class="parallax-background" id="parallax-background">
@@ -144,10 +108,8 @@
             <!-- Les billes de pagination seront générées en JavaScript -->
         </div>
     </section>
-
-    <footer class="footer">
-        <span>&copy; 2024 Cabinet de Maître Jean-Claude MÉRIEUX. Tous droits réservés.</span>
-    </footer>
+    <footer-component></footer-component>
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="script.min.js"></script>
 </body>
