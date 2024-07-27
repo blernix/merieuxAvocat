@@ -411,7 +411,7 @@ footer {
 
 .svg-elem-1 {
   -webkit-animation: animate-svg-fill-1 0.7s linear 0.9s both;
-          animation: animate-svg-fill-1 0.7s linear 0.1s both;
+          animation: animate-svg-fill-1 0.7s linear 0.9s both;
 }
 
 @-webkit-keyframes animate-svg-fill-2 {
