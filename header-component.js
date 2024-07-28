@@ -147,7 +147,7 @@ class HeaderComponent extends HTMLElement {
                   width: 100%;
                   text-align: center;
                   padding: 10px 0;
-                  border-top: 1px solid #333;
+                  // border-top: 1px solid #333;
                   display: flex;
                   flex-direction: column;
                   align-items: center;
@@ -183,7 +183,7 @@ class HeaderComponent extends HTMLElement {
                     <div class="menu-toggle" id="menu-toggle" aria-label="Menu">☰</div>
                 </div>
                 <ul class="nav-links" id="nav-links">
-                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="index.html">Accueil</a></li>
                     <li class="dropdown">
                         <a href="#business-law" aria-haspopup="true" aria-expanded="false">Droit des affaires <span class="arrow">▼</span></a>
                         <ul class="dropdown-content">
@@ -194,7 +194,7 @@ class HeaderComponent extends HTMLElement {
                     <li class="dropdown">
                         <a href="#tax-law" aria-haspopup="true" aria-expanded="false">Droit fiscal <span class="arrow">▼</span></a>
                         <ul class="dropdown-content">
-                            <li><a href="#business-tax">Fiscalité des entreprises</a></li>
+                            <li><a href="fiscalité-des-entreprises.html">Fiscalité des entreprises</a></li>
                             <li><a href="#patrimonial-tax">Fiscalité patrimoniale</a></li>
                             <li><a href="#real-estate-tax">Fiscalité immobilière</a></li>
                             <li><a href="#indirect-tax">Avocat fiscalité indirecte</a></li>
