@@ -85,7 +85,7 @@ class HeaderComponent extends HTMLElement {
                 overflow: hidden;
                 opacity: 0;
                 border-radius: 8px;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7); /* Subtle shadow for dropdown */
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for dropdown */
                 transition: max-height 0.7s ease-out, opacity 0.7s ease-out;
               }
               
