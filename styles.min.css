@@ -19,8 +19,9 @@ body {
   line-height: 1.6;
 }
 
-.brand-logo {
-  height: 40px;
+.a:focus, a:active {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 
