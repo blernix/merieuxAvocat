@@ -43,6 +43,7 @@ body {
   /* background: url('assets/images/Logo.svg') no-repeat center center; */
   z-index: -1;
   transform: translateZ(-1px) scale(2);
+  
  
 
 }
@@ -53,8 +54,18 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--white-color);
+  color: black;
   text-align: center;
+}
+
+.title-page {
+  font-size: 3rem; /* Ajuste la taille comme tu veux */
+    color: #333; /* Change la couleur si besoin */
+    text-shadow: 2px 2px 0 #fff, 4px 4px 0 #ccc, 1px 1px 0 #aaa;
+    font-family: 'Libre Baskerville', sans-serif; /* Tu peux changer de police si tu veux */
+    letter-spacing: 1px; /* Ajuste l'espacement des lettres */
+    transform: rotateX(1deg) rotateY(1deg); /* Effet de perspective */
+    perspective: 10px; /* Ajuste la profondeur de la perspective */
 }
 
 .main-content {
