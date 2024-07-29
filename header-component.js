@@ -169,6 +169,7 @@ class HeaderComponent extends HTMLElement {
               
                 /* Disable hover effects for mobile */
                 .nav-links a:hover, 
+                .navbar a:hover,
                 .nav-links .dropdown-content li a:hover {
                   color: inherit;
                   background-color: inherit;
